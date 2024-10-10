@@ -1,20 +1,21 @@
-name: Install Tools on Self-Hosted Runner
+name: Test Self-Hosted Runner
 
-on: 
-  push:
-    branches:
-      - main  # Change to your default branch if different
+on: [push]
 
 jobs:
-  install-tools:
+  check-tools:
     runs-on: self-hosted
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Check Docker version
+      run: docker --version
 
-      
-      - name: Run Ansible Playbook
-        run: ansible-playbook action-runner/ansible-playbook.yml
-        env:
-          ANSIBLE_HOST_KEY_CHECKING: false
+    - name: Check Maven version
+      run: mvn -version
 
+    - name: Check Google Chrome version
+      run: google-chrome --version
+
+    - name: Run Ansible Playbook
+      run: ansible-playbook action-runner/ansible-playbook.yml
+      env:
+        ANSIBLE_HOST_KEY_CHECKING: false
