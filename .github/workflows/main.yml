@@ -12,7 +12,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      
       - name: Run Ansible Playbook
         run: ansible-playbook action-runner/ansible-playbook.yml
         env:
           ANSIBLE_HOST_KEY_CHECKING: false
+
