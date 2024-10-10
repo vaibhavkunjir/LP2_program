@@ -16,6 +16,7 @@ jobs:
       run: google-chrome --version
 
     - name: Run Ansible Playbook
-      run: ansible-playbook action-runner/ansible-playbook.yml
+      run: ansible-playbook ansible-playbook.yml
+      working-directory: action-runner
       env:
         ANSIBLE_HOST_KEY_CHECKING: false
