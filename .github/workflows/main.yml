@@ -15,7 +15,11 @@ jobs:
     - name: Check Google Chrome version
       run: google-chrome --version
 
+    - name: List files in action-runner directory
+      run: ls -al action-runner
+
     - name: Run Ansible Playbook
       run: ansible-playbook ansible-playbook.yml
       working-directory: action-runner
-      
+      env:
+        ANSIBLE_HOST_KEY_CHECKING: false
