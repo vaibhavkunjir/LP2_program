@@ -6,6 +6,12 @@ jobs:
   check-tools:
     runs-on: self-hosted
     steps:
+    - name: Print current working directory
+      run: pwd
+
+    - name: List all files in the repository
+      run: ls -alR
+
     - name: Check Docker version
       run: docker --version
 
@@ -15,11 +21,7 @@ jobs:
     - name: Check Google Chrome version
       run: google-chrome --version
 
-    - name: List files in action-runner directory
-      run: ls -al action-runner
-
     - name: Run Ansible Playbook
-      run: ansible-playbook ansible-playbook.yml
-      working-directory: action-runner
+      run: ansible-playbook action-runner/ansible-playbook.yml
       env:
         ANSIBLE_HOST_KEY_CHECKING: false
