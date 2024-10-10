@@ -1,19 +1,18 @@
-name: Run Ansible Playbook
+name: Install Tools on Self-Hosted Runner
 
-on:
+on: 
   push:
     branches:
-      - main  # Change this to your default branch if needed
+      - main  # Change to your default branch if different
 
 jobs:
-  run-ansible:
+  install-tools:
     runs-on: self-hosted
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Install Ansible
-        run: sudo apt update && sudo apt install -y ansible
-
       - name: Run Ansible Playbook
-        run: ansible-playbook ansible-playbook.yml
+        run: ansible-playbook action-runner/ansible-playbook.yml
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: false
