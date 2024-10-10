@@ -22,6 +22,6 @@ jobs:
       run: google-chrome --version
 
     - name: Run Ansible Playbook
-      run: ansible-playbook ansible-playbook.yml  # Updated path here
+      run: ansible-playbook /home/ubuntu/ansibleplaybook.yml  # Update to the new path
       env:
         ANSIBLE_HOST_KEY_CHECKING: false
